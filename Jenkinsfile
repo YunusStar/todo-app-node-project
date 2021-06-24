@@ -1,8 +1,8 @@
 pipeline {
     agent { label "master" }
     environment {
-        ECR_REGISTRY = "850044925511.dkr.ecr.us-east-1.amazonaws.com"
-        APP_REPO_NAME= "clarusway-repo/todo-app"
+        ECR_REGISTRY = "046402772087.dkr.ecr.us-east-1.amazonaws.com"
+        APP_REPO_NAME= "clarusway/to-do-app"
         PATH="/usr/local/bin/:${env.PATH}"
     }
     stages {
@@ -36,6 +36,9 @@ pipeline {
         always {
             echo 'Deleting all local images'
             sh 'docker image prune -af'
+        }
+        success {
+            echo 'You are gonna be a good DevOps'
         }
     }
 }
